@@ -18,3 +18,6 @@ edit8=customedit.create("",830, 574, 547, 67,false,"Wpisz treść nr 8....",fals
 customedit.property(edit5,"caret",{255,255,255,255})
 
 
+
+
+

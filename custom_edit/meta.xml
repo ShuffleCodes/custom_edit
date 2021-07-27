@@ -1,6 +1,7 @@
 <meta>
 	<script src="edit.lua" type="client" cache="false"/>
 	<script src="functions.lua" type="client" cache="false"/>
+	<script src="change.lua" type="client" cache="false"/>
 	<script src="test.lua" type="client" cache="false"/>
 	<script src="update.lua" type="server"/>
 	<file src="fonts/font.ttf"/>
@@ -10,12 +11,12 @@
 	<file src="version.txt"/>
 	
 	
-	<export function="customedit.create" type="client"/>
-	<export function="customedit.setMasked" type="client"/>
-	<export function="customedit.getText" type="client"/>
-	<export function="customedit.setText" type="client"/>
-	<export function="customedit.visible" type="client"/>
-	<export function="customedit.maxLength" type="client"/>
-	<export function="customedit.changePos" type="client"/>
-	<export function="customedit.property" type="client"/>
+	<export function="createCustomEdit" type="client"/>
+	<export function="editSetMasked" type="client"/>
+	<export function="editGetText" type="client"/>
+	<export function="editSetText" type="client"/>
+	<export function="editSetVisible" type="client"/>
+	<export function="editMaxLength" type="client"/>
+	<export function="editChangePos" type="client"/>
+	<export function="editSetProperty" type="client"/>
 </meta>

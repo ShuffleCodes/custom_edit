@@ -91,6 +91,8 @@ function customedit.active()
 end
 
 
+
+
 function customedit.create(txt,x,y,w,h,postgui,placeholder,masked,font,activecolor,fontcolor,bgcolor,caret,visible,length)
     if postgui~=true or postgui~=false then
         postgui=false
