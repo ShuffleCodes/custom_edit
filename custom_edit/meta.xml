@@ -1,0 +1,19 @@
+<meta>
+	<script src="edit.lua" type="client" cache="false"/>
+	<script src="functions.lua" type="client" cache="false"/>
+	<script src="test.lua" type="client" cache="false"/>
+	<file src="fonts/font.ttf"/>
+	<file src="fonts/font2.ttf"/>
+	<file src="fonts/font3.ttf"/>
+	<file src="fonts/font4.ttf"/>
+	
+	
+	<export function="customedit.create" type="client"/>
+	<export function="customedit.setMasked" type="client"/>
+	<export function="customedit.getText" type="client"/>
+	<export function="customedit.setText" type="client"/>
+	<export function="customedit.visible" type="client"/>
+	<export function="customedit.maxLength" type="client"/>
+	<export function="customedit.changePos" type="client"/>
+	<export function="customedit.property" type="client"/>
+</meta>
