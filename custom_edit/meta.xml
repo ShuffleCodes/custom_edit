@@ -7,6 +7,7 @@
 	<file src="fonts/font2.ttf"/>
 	<file src="fonts/font3.ttf"/>
 	<file src="fonts/font4.ttf"/>
+	<file src="version.txt"/>
 	
 	
 	<export function="customedit.create" type="client"/>
