@@ -101,6 +101,25 @@ addEventHandler("onClientClick",root,function(key,state)
     end
 end)
 
+
+function nextEdit()
+    if customedit.getActive() then
+        if customedit.getActive()<#edits then
+            edits[customedit.getActive()+1]["active"]=true
+            edits[customedit.getActive()]["active"]=false
+            if not edits[customedit.getActive()]["visible"] then
+                nextEdit()
+            end
+        elseif customedit.getActive()==#edits then
+            edits[customedit.getActive()]["active"]=false
+            edits[1]["active"]=true
+            if not edits[1]["visible"] then
+                nextEdit()
+            end
+        end
+    end
+end
+
 addEventHandler("onClientKey",root,function(key, state)
     if key=="backspace" and state then
         if isCursorShowing() then
@@ -112,15 +131,7 @@ addEventHandler("onClientKey",root,function(key, state)
         end
     elseif key=="tab" and state then
         if isCursorShowing() then
-            if customedit.getActive() then
-                if customedit.getActive()<#edits then
-                    edits[customedit.getActive()+1]["active"]=true
-                    edits[customedit.getActive()]["active"]=false
-                elseif customedit.getActive()==#edits then
-                    edits[customedit.getActive()]["active"]=false
-                    edits[1]["active"]=true
-                end
-            end
+            nextEdit()
         end
     elseif key=="a" and state then
         if isCursorShowing() then

@@ -258,7 +258,6 @@ function customedit.destroy(edit)
         for k,v in ipairs(edits)do
             if v["id"]==edit then
                 table.remove(edits,k)
-                break
                 return true
             end
         end
@@ -287,7 +286,6 @@ function customedit.visible(edit,state)
             for k,v in ipairs(edits)do
                 if v["id"]==edit then
                     v["visible"]=state
-                    guiSetVisible(v["edit"],state)
                     return true
                 end
             end
