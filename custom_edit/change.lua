@@ -30,7 +30,6 @@ function editSetProperty(...)
     customedit.property(...)
 end
 
-
 function destroyCustomEdit(...)
     customedit.destroy(...)
 end
