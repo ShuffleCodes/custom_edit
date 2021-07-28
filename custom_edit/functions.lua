@@ -295,6 +295,13 @@ function customedit.changePos(edit,x,y)
 end
 
 
+function customedit.autoDestroy(edit,resource)
+    if edit and resource then
+        table.insert(resources,{id=edit,resource=resource})
+    end
+end
+
+
 function customedit.property(edit,data,value)
     if edit and data and value then
         for k,v in ipairs(edits)do

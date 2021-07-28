@@ -2,6 +2,7 @@ customedit={}
 local fonts={}
 edits={}
 variable={}
+resources={}
 s=Vector2(guiGetScreenSize())
 
 
@@ -146,3 +147,11 @@ addEventHandler("onClientCharacter",root,function(char)
 end)
 
 
+addEventHandler("onClientResourceStop",root,function(res)
+    for k,v in ipairs(resources)do
+        if v["resource"]==getResourceName(res) then
+            customedit.destroy(v["id"])
+            table.remove(resources,k)
+        end
+    end
+end)

@@ -21,4 +21,5 @@
 	<export function="editChangePos" type="client"/>
 	<export function="editSetProperty" type="client"/>
 	<export function="destroyCustomEdit" type="client"/>
+	<export function="autoDestroy" type="client"/>
 </meta>

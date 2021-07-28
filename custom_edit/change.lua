@@ -36,3 +36,8 @@ end
 function destroyCustomEdit(...)
     customedit.destroy(...)
 end
+
+
+function autoDestroy(...)
+    customedit.autoDestroy(...)
+end
