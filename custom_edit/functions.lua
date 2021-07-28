@@ -63,6 +63,16 @@ local keys = {
     ["~"] = true,
     [" "] = true}
 
+
+local events={
+    "onCustomEditFocus",
+    "onCustomEditLeave",
+}
+
+for i=1,#events do
+    addEvent(events[i],true) 
+end 
+
 function customedit.validChar (char)
 	if (keys[string.lower(char)]) then
 		return true
@@ -308,4 +318,7 @@ function customedit.property(edit,data,value)
         end
     end
 end
+
+
+
 

@@ -85,13 +85,13 @@ addEventHandler("onClientClick",root,function(key,state)
                     if not v["active"] then
                         v["active"]=true
                         v["click"] = getTickCount()
-                        triggerEvent("onCustomEditFocus",localPlayer,k)
-                        guiSetInputMode("no_binds")
+                        guiSetInputMode("no_binds")      
+                        triggerEvent("onCustomEditFocus",localPlayer,v["id"])
                     end
                 end
             else
                 if v["active"] then
-                    triggerEvent("onCustomEditLeave",localPlayer,k)
+                    triggerEvent("onCustomEditLeave",localPlayer,v["id"])
                 end
                 v["active"]=false
                 v["click"] = getTickCount()
@@ -122,20 +122,20 @@ addEventHandler("onClientKey",root,function(key, state)
                 end
             end
         end
-    end
-end)
-
-bindKey("a","down",function()
-    if isCursorShowing() then
-        if getKeyState("lctrl") then
-            for k,v in ipairs(edits)do
-                if v["active"] then
-                    v["txt"] = ""
+    elseif key=="a" and state then
+        if isCursorShowing() then
+            if getKeyState("lctrl") then
+                for k,v in ipairs(edits)do
+                    if v["active"] then
+                        v["txt"] = ""
+                    end
                 end
             end
         end
     end
 end)
+
+
 
 
 addEventHandler("onClientCharacter",root,function(char)
