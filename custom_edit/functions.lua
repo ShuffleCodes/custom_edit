@@ -61,6 +61,11 @@ local keys = {
     ["("] = true, 
     [")"] = true, 
     ["~"] = true,
+    ["ł"] = true,
+    ["ć"] = true,
+    ["ź"] = true,
+    ["ż"] = true,
+    ["ą"] = true,
     [" "] = true}
 
 
@@ -121,6 +126,8 @@ function customedit.freeID()
     end
 end
 
+
+edit={}
 
 function customedit.create(txt,x,y,w,h,postgui,placeholder,masked,font,activecolor,fontcolor,bgcolor,caret,visible,length,fontsize)
     if postgui~=true and postgui~=false then
@@ -189,6 +196,8 @@ function customedit.create(txt,x,y,w,h,postgui,placeholder,masked,font,activecol
     })
     return variable.id
 end
+
+
 
 
 function customedit.getActive()
@@ -271,6 +280,7 @@ function customedit.visible(edit,state)
             for k,v in ipairs(edits)do
                 if v["id"]==edit then
                     v["visible"]=state
+                    guiSetVisible(v["edit"],state)
                 end
             end
         end

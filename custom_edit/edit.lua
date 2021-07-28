@@ -132,46 +132,6 @@ addEventHandler("onClientKey",root,function(key, state)
                 end
             end
         end
-    elseif key=="z" and state then
-        if isCursorShowing() then
-            if getKeyState("ralt") then
-                for k,v in ipairs(edits)do
-                    if v["active"] then
-                        v["txt"] = v["txt"].."ż"
-                    end
-                end
-            end
-        end
-    elseif key=="x" and state then
-        if isCursorShowing() then
-            if getKeyState("ralt") then
-                for k,v in ipairs(edits)do
-                    if v["active"] then
-                        v["txt"] = v["txt"].."ź"
-                    end
-                end
-            end
-        end
-    elseif key=="a" and state then
-        if isCursorShowing() then
-            if getKeyState("ralt") then
-                for k,v in ipairs(edits)do
-                    if v["active"] then
-                        v["txt"] = v["txt"].."ą"
-                    end
-                end
-            end
-        end
-    elseif key=="c" and state then
-        if isCursorShowing() then
-            if getKeyState("ralt") then
-                for k,v in ipairs(edits)do
-                    if v["active"] then
-                        v["txt"] = v["txt"].."ć"
-                    end
-                end
-            end
-        end
     end
 end)
 
@@ -186,6 +146,7 @@ addEventHandler("onClientCharacter",root,function(char)
                             v["txt"]=v["txt"]..char
                             v["cursor"]=getTickCount()
                         end
+                        --v["txt"]=guiGetText(v["edit"])
                     end
                 end
             end
