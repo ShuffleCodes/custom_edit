@@ -134,7 +134,7 @@ function customedit.create(txt,x,y,w,h,postgui,placeholder,masked,font,activecol
         postgui=false
     end
     if not fontsize then
-        variable.size=h/3
+        variable.size=h/1.5
     else
         variable.size=fontsize
     end
@@ -220,9 +220,11 @@ function customedit.setMasked(edit,masked)
         for k,v in ipairs(edits)do
             if v["id"]==edit then
                 edits[k]["masked"]=masked
+                return true
             end
         end
     end
+    return false
 end
 
 
@@ -243,10 +245,12 @@ function customedit.setText(edit,txt)
             for k,v in ipairs(edits)do
                 if v["id"]==edit then
                     v["txt"]=txt
+                    return true
                 end
             end
         end
     end
+    return false
 end
 
 function customedit.destroy(edit)
@@ -255,9 +259,11 @@ function customedit.destroy(edit)
             if v["id"]==edit then
                 table.remove(edits,k)
                 break
+                return true
             end
         end
     end
+    return false
 end
 
 
@@ -282,10 +288,12 @@ function customedit.visible(edit,state)
                 if v["id"]==edit then
                     v["visible"]=state
                     guiSetVisible(v["edit"],state)
+                    return true
                 end
             end
         end
     end
+    return false
 end
 
 
@@ -296,11 +304,13 @@ function customedit.maxLength(edit,value)
                 for k,v in ipairs(edits)do
                     if v["id"]==edit then
                         v["maxLength"]=value
+                        return true
                     end
                 end
             end
         end
     end
+    return false
 end
 
 function customedit.changePos(edit,x,y)
@@ -310,10 +320,12 @@ function customedit.changePos(edit,x,y)
                 if v["id"]==edit then
                     v["x"]=x
                     v["y"]=y
+                    return true
                 end
             end
         end
     end
+    return false
 end
 
 
@@ -334,11 +346,12 @@ function customedit.property(edit,data,value)
         for k,v in ipairs(edits)do
             if v["id"]==edit then
                 v[data]=value
+                return true
             end
         end
     end
+    return false
 end
-
 
 
 

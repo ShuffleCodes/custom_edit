@@ -3,7 +3,7 @@ function createCustomEdit(...)
 end
 
 function editSetMasked(...)
-    customedit.setMasked(...)
+    return customedit.setMasked(...)
 end
 
 function editGetText(...)
@@ -11,27 +11,27 @@ function editGetText(...)
 end
 
 function editSetText(...)
-    customedit.setText(...)
+    return customedit.setText(...)
 end
 
 function editSetVisible(...)
-    customedit.visible(...)
+    return customedit.visible(...)
 end
 
 function editMaxLength(...)
-    customedit.maxLength(...)
+    return customedit.maxLength(...)
 end
 
 function editChangePos(...)
-    customedit.changePos(...)
+    return customedit.changePos(...)
 end
 
 function editSetProperty(...)
-    customedit.property(...)
+    return customedit.property(...)
 end
 
 function destroyCustomEdit(...)
-    customedit.destroy(...)
+    return customedit.destroy(...)
 end
 
 
