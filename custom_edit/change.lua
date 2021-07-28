@@ -36,6 +36,3 @@ function destroyCustomEdit(...)
 end
 
 
-function editAutoDestroy(...)
-    customedit.autoDestroy(...)
-end

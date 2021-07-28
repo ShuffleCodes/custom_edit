@@ -152,6 +152,7 @@ function customedit.create(txt,x,y,w,h,postgui,placeholder,masked,font,activecol
         visible=true
     end
     variable.id=customedit.freeID()
+    table.insert(resources,{id=variable.id,resource=getResourceName(sourceResource)})
     table.insert(edits,{
         id=variable.id,
         txt=txt or "",
@@ -295,11 +296,7 @@ function customedit.changePos(edit,x,y)
 end
 
 
-function customedit.autoDestroy(edit,resource)
-    if edit and resource then
-        table.insert(resources,{id=edit,resource=resource})
-    end
-end
+
 
 
 function customedit.property(edit,data,value)
