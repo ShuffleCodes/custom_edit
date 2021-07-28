@@ -169,7 +169,7 @@ function customedit.create(txt,x,y,w,h,postgui,placeholder,masked,font,activecol
         visible=true
     end
     variable.id=customedit.freeID()
-    table.insert(resources,{id=variable.id,resource=getResourceName(sourceResource)})
+    --table.insert(resources,{id=variable.id,resource=getResourceName(sourceResource)})
     table.insert(edits,{
         id=variable.id,
         txt=txt or "",
@@ -177,6 +177,7 @@ function customedit.create(txt,x,y,w,h,postgui,placeholder,masked,font,activecol
         y=y,
         w=w,
         h=h,
+        resource=sourceResource,
         postgui=postgui,
         placeholder=placeholder,
         masked=masked or false,
@@ -316,7 +317,16 @@ function customedit.changePos(edit,x,y)
 end
 
 
-
+function customedit.clear(res)
+    for k,v in ipairs(edits)do
+        if v["resource"]==res then
+            table.remove(edits,k)
+            customedit.clear(res)
+            break
+        end
+    end
+end
+addEventHandler("onClientResourceStop",root,customedit.clear)
 
 
 function customedit.property(edit,data,value)

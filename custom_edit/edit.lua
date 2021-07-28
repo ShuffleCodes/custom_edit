@@ -146,7 +146,6 @@ addEventHandler("onClientCharacter",root,function(char)
                             v["txt"]=v["txt"]..char
                             v["cursor"]=getTickCount()
                         end
-                        --v["txt"]=guiGetText(v["edit"])
                     end
                 end
             end
@@ -155,11 +154,6 @@ addEventHandler("onClientCharacter",root,function(char)
 end)
 
 
-addEventHandler("onClientResourceStop",root,function(res)
-    for k,v in ipairs(resources)do
-        if v["resource"]==getResourceName(res) then
-            customedit.destroy(v["id"])
-            table.remove(resources,k)
-        end
-    end
-end)
+
+
+
