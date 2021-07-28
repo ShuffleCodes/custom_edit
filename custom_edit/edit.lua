@@ -12,7 +12,7 @@ s=Vector2(guiGetScreenSize())
 addEventHandler("onClientRender",root,function()
     for k,v in ipairs(edits)do
         if v["visible"] then
-            dxDrawRectangle(v["x"],v["y"],v["w"],v["h"],tocolor(v["bgcolor"][1],v["bgcolor"][2],v["bgcolor"][3],v["bgcolor"][4]),v.postgui)
+            dxDrawRectangle(v["x"],v["y"],v["w"],v["h"],tocolor(v["bgcolor"][1],v["bgcolor"][2],v["bgcolor"][3],v["bgcolor"][4]),v["postgui"])
             if v["masked"] then
                 variable.width=dxGetTextWidth(customedit.convertMasked(v["txt"]),1,v["font"],false)
             else
@@ -25,8 +25,13 @@ addEventHandler("onClientRender",root,function()
             	variable.cursor = v["w"]-(20/1920)*s["x"]
             end
             if v["active"] then
+                --[[if isCursorShowing() then
+                    if getKeyState("backspace") then
+                        v["txt"] = string.sub(v["txt"], 1, #v["txt"] - 1)
+                    end
+                end]]--
                 v["alpha"] = interpolateBetween(0, 0, 0, 75, 0, 0, (getTickCount() - v["click"]) / 200, "Linear")
-                dxDrawLine(v["x"],v["y"]+v["h"],v["x"]+v["w"],v["y"]+v["h"],tocolor(v["activecolor"][1],v["activecolor"][2],v["activecolor"][3],v["alpha"]/75*200),2)
+                dxDrawLine(v["x"],v["y"]+v["h"],v["x"]+v["w"],v["y"]+v["h"],tocolor(v["activecolor"][1],v["activecolor"][2],v["activecolor"][3],v["alpha"]/75*200),2,v["postgui"])
                 variable.alpha = interpolateBetween(0, 0, 0, 255, 0, 0, (getTickCount() - v["cursor"]) / 1000, "SineCurve")
                 dxDrawRectangle(v["x"]+variable.cursor+(10/1920)*s.x,v["y"]+v["h"]/2-(v["h"]-(12/1080)*s["y"])/2,(1/1920)*s["x"],v["h"]-(12/1080)*s["y"],tocolor(v["caret"][1],v["caret"][2],v["caret"][3],variable.alpha),true)
             else
@@ -34,7 +39,7 @@ addEventHandler("onClientRender",root,function()
             end
            
             if v["placeholder"] and string.len(v["txt"])==0 and not v["active"] then
-                dxDrawText(v["placeholder"],v["x"]+(10/1920)*s["x"],v["y"],v["w"]+v["x"]+(10/1920)*s["x"],v["h"]+v["y"],tocolor(v["fontcolor"][1],v["fontcolor"][2],v["fontcolor"][3],v["fontcolor"][4]),1,v["font"],"left","center",false,false,v.postgui)
+                dxDrawText(v["placeholder"],v["x"]+(10/1920)*s["x"],v["y"],v["w"]+v["x"]+(10/1920)*s["x"],v["h"]+v["y"],tocolor(v["fontcolor"][1],v["fontcolor"][2],v["fontcolor"][3],v["fontcolor"][4]),1,v["font"],"left","center",true,false,v.postgui)
             else
                 if variable.width>(v.w)-(10/1920)*s.x then
                     if v["masked"] then
@@ -44,9 +49,9 @@ addEventHandler("onClientRender",root,function()
                     end
                 else
                     if v["masked"] then
-                        dxDrawText(customedit.convertMasked(v["txt"]),v["x"]+(10/1920)*s["x"],v["y"]+(7/1080)*s.y,v["w"]+v["x"]+(10/1920)*s["x"],v["h"]+v["y"],tocolor(v["fontcolor"][1],v["fontcolor"][2],v["fontcolor"][3],v["fontcolor"][4]),1,v["font"],"left","center",false,false,v.postgui)
+                        dxDrawText(customedit.convertMasked(v["txt"]),v["x"]+(10/1920)*s["x"],v["y"]+(7/1080)*s.y,v["w"]+v["x"]+(10/1920)*s["x"],v["h"]+v["y"],tocolor(v["fontcolor"][1],v["fontcolor"][2],v["fontcolor"][3],v["fontcolor"][4]),1,v["font"],"left","center",true,false,v.postgui)
                     else
-                        dxDrawText(v["txt"],v["x"]+(10/1920)*s["x"],v["y"],v["w"]+v["x"]+(10/1920)*s["x"],v["h"]+v["y"],tocolor(v["fontcolor"][1],v["fontcolor"][2],v["fontcolor"][3],v["fontcolor"][4]),1,v["font"],"left","center",false,false,v.postgui)
+                        dxDrawText(v["txt"],v["x"]+(10/1920)*s["x"],v["y"],v["w"]+v["x"]+(10/1920)*s["x"],v["h"]+v["y"],tocolor(v["fontcolor"][1],v["fontcolor"][2],v["fontcolor"][3],v["fontcolor"][4]),1,v["font"],"left","center",true,false,v.postgui)
                     end
                 end
             end
@@ -58,8 +63,9 @@ end)
 
 
 
-
-showCursor(true)
+bindKey("f3","down",function()
+    showCursor(not isCursorShowing())
+end)
 
 addEventHandler("onClientClick",root,function(key,state)
     if key=="left" and state=="down" then
@@ -69,11 +75,17 @@ addEventHandler("onClientClick",root,function(key,state)
                     if not v["active"] then
                         v["active"]=true
                         v["click"] = getTickCount()
+                        triggerEvent("onCustomEditFocus",localPlayer,k)
+                        guiSetInputMode("no_binds")
                     end
                 end
             else
+                if v["active"] then
+                    triggerEvent("onCustomEditLeave",localPlayer,k)
+                end
                 v["active"]=false
                 v["click"] = getTickCount()
+                guiSetInputMode("allow_binds")
             end
         end
     end

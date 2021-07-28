@@ -93,15 +93,45 @@ end
 
 
 
-function customedit.create(txt,x,y,w,h,postgui,placeholder,masked,font,activecolor,fontcolor,bgcolor,caret,visible,length)
-    if postgui~=true or postgui~=false then
+function customedit.freeID()
+    if #edits==0 then
+        return 1
+    end
+    local count=0
+    local rnd=math.random(1,1000)
+    for _,v in ipairs(edits)do
+        if rnd==v["id"] then
+            count=count+1
+        end
+    end
+    if count>0 then
+        customedit.freeID()
+    elseif count==0 then
+        return rnd
+    end
+end
+
+
+function customedit.create(txt,x,y,w,h,postgui,placeholder,masked,font,activecolor,fontcolor,bgcolor,caret,visible,length,fontsize)
+    if postgui~=true and postgui~=false then
         postgui=false
     end
-    variable.size=h/3
+    if not fontsize then
+        variable.size=h/3
+    else
+        variable.size=fontsize
+    end
     if not font then
         font="arial"
     else
         font=dxCreateFont("fonts/"..font..".ttf",(variable.size/1920)*s.x)
+    end
+    if placeholder then
+        variable.testWidth=dxGetTextWidth(placeholder,1,font,false)
+        if variable.testWidth > w-(10/1920)*s.x then
+            placeholder=false
+            outputDebugString("Placeholder is too long for this edit",1)
+        end
     end
     if not activecolor then
         activecolor={255,0,0,255}
@@ -118,7 +148,12 @@ function customedit.create(txt,x,y,w,h,postgui,placeholder,masked,font,activecol
     if not length then
         length=40
     end
+    if not visible and visible~=false then
+        visible=true
+    end
+    variable.id=customedit.freeID()
     table.insert(edits,{
+        id=variable.id,
         txt=txt or "",
         x=x,
         y=y,
@@ -128,19 +163,20 @@ function customedit.create(txt,x,y,w,h,postgui,placeholder,masked,font,activecol
         placeholder=placeholder,
         masked=masked or false,
         font=font,
+        size=variable.size,
         active=false,
         activecolor=activecolor,
         fontcolor=fontcolor,
         bgcolor=bgcolor,
         caret=caret,
-        visible=visible or false,
+        visible=visible,
         cursor=0,
         maxLength=length,
         click=0,
         alpha=0,
         readOnly=false,
     })
-    return #edits
+    return variable.id
 end
 
 
@@ -161,7 +197,7 @@ end
 function customedit.setMasked(edit,masked)
     if edit then
         for k,v in ipairs(edits)do
-            if k==edit then
+            if v["id"]==edit then
                 edits[k]["masked"]=masked
             end
         end
@@ -172,7 +208,7 @@ end
 function customedit.getText(edit)
     if edit then
         for k,v in ipairs(edits)do
-            if k==edit then
+            if v["id"]==edit then
                 return v["txt"]
             end
         end
@@ -184,7 +220,7 @@ function customedit.setText(edit,txt)
     if edit then
         if txt then
             for k,v in ipairs(edits)do
-                if k==edit then
+                if v["id"]==edit then
                     v["txt"]=txt
                 end
             end
@@ -192,23 +228,19 @@ function customedit.setText(edit,txt)
     end
 end
 
-
---[[function customedit.destroy(edit)
+function customedit.destroy(edit)
     if edit then
         for k,v in ipairs(edits)do
-            if k==edit then
+            if v["id"]==edit then
                 table.remove(edits,k)
-                outputDebugString("Usunięto",0,0,255,0)
                 break
             end
         end
-        for k,v in ipairs(edits)do
-            if k>=edit then
-                edits[k-1]=v
-            end
-        end
     end
-end]]--
+end
+
+
+
 
 --[[function customedit.setCaretColor(edit,color)
     if edit and color then
@@ -226,7 +258,7 @@ function customedit.visible(edit,state)
     if edit then
         if state==true or state==false then
             for k,v in ipairs(edits)do
-                if k==edit then
+                if v["id"]==edit then
                     v["visible"]=state
                 end
             end
@@ -240,7 +272,9 @@ function customedit.maxLength(edit,value)
         if tonumber(value) then
             if value>0 then
                 for k,v in ipairs(edits)do
-                    v["maxLength"]=value
+                    if v["id"]==edit then
+                        v["maxLength"]=value
+                    end
                 end
             end
         end
@@ -251,7 +285,7 @@ function customedit.changePos(edit,x,y)
     if edit and x and y then
         if tonumber(x) and tonumber(y) then
             for k,v in ipairs(edits)do
-                if k==edit then
+                if v["id"]==edit then
                     v["x"]=x
                     v["y"]=y
                 end
@@ -264,7 +298,7 @@ end
 function customedit.property(edit,data,value)
     if edit and data and value then
         for k,v in ipairs(edits)do
-            if k==edit then
+            if v["id"]==edit then
                 v[data]=value
             end
         end

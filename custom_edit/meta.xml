@@ -1,4 +1,5 @@
 <meta>
+	<info name="Custom edit" author="sirphantasm" version="1.0 Beta"/>
 	<script src="edit.lua" type="client" cache="false"/>
 	<script src="functions.lua" type="client" cache="false"/>
 	<script src="change.lua" type="client" cache="false"/>
@@ -19,4 +20,5 @@
 	<export function="editMaxLength" type="client"/>
 	<export function="editChangePos" type="client"/>
 	<export function="editSetProperty" type="client"/>
+	<export function="destroyCustomEdit" type="client"/>
 </meta>

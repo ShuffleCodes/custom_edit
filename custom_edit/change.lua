@@ -1,5 +1,6 @@
 function createCustomEdit(...)
-    customedit.create(...)
+    local edit=customedit.create(...)
+    return edit
 end
 
 function editSetMasked(...)
@@ -7,7 +8,8 @@ function editSetMasked(...)
 end
 
 function editGetText(...)
-    customedit.getText(...)
+    local edit_text=customedit.getText(...)
+    return edit_text
 end
 
 function editSetText(...)
@@ -28,4 +30,9 @@ end
 
 function editSetProperty(...)
     customedit.property(...)
+end
+
+
+function destroyCustomEdit(...)
+    customedit.destroy(...)
 end
