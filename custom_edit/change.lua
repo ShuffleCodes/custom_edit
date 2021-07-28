@@ -1,6 +1,5 @@
 function createCustomEdit(...)
-    local edit=customedit.create(...)
-    return edit
+    return customedit.create(...)
 end
 
 function editSetMasked(...)
@@ -8,8 +7,7 @@ function editSetMasked(...)
 end
 
 function editGetText(...)
-    local edit_text=customedit.getText(...)
-    return edit_text
+    return customedit.getText(...)
 end
 
 function editSetText(...)
