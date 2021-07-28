@@ -4,4 +4,4 @@ Easy to use custom edit for everyone
 
 # WIKI
 
-During work
+https://wiki.multitheftauto.com/wiki/Resource:Custom_edit
