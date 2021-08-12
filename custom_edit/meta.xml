@@ -21,4 +21,8 @@
 	<export function="editChangePos" type="client"/>
 	<export function="editSetProperty" type="client"/>
 	<export function="destroyCustomEdit" type="client"/>
+	
+	<aclrequest>
+		<right name="function.fetchRemote" access="true" />
+	</aclrequest>
 </meta>
