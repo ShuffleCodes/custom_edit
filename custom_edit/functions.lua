@@ -352,4 +352,14 @@ function customedit.property(edit,data,value)
 end
 
 
-
+function customedit.focus(edit)
+    if edit then
+        for k,v in ipairs(edits)do
+            if v["id"]==edit then
+                v["active"]=true
+                return true
+            end
+        end
+    end
+    return false
+end

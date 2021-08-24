@@ -30,6 +30,10 @@ function editSetProperty(...)
     return customedit.property(...)
 end
 
+function editSetFocus(...)
+    return customedit.focus(...)
+end
+
 function destroyCustomEdit(...)
     return customedit.destroy(...)
 end

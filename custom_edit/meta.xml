@@ -20,6 +20,7 @@
 	<export function="editMaxLength" type="client"/>
 	<export function="editChangePos" type="client"/>
 	<export function="editSetProperty" type="client"/>
+	<export function="editSetFocus" type="client"/>
 	<export function="destroyCustomEdit" type="client"/>
 	
 	<aclrequest>
