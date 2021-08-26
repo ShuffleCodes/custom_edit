@@ -110,12 +110,26 @@ function nextEdit()
             edits[customedit.getActive()]["active"]=false
             if not edits[customedit.getActive()]["visible"] then
                 nextEdit()
+                return
+            end
+            triggerEvent("onCustomEditFocus",localPlayer,edits[customedit.getActive()]["id"])
+            if (customedit.getActive()-1)==0 then
+                triggerEvent("onCustomEditLeave",localPlayer,edits[#edits]["id"])
+            else
+                triggerEvent("onCustomEditLeave",localPlayer,edits[customedit.getActive()-1]["id"])
             end
         elseif customedit.getActive()==#edits then
             edits[customedit.getActive()]["active"]=false
             edits[1]["active"]=true
             if not edits[1]["visible"] then
                 nextEdit()
+                return
+            end
+            triggerEvent("onCustomEditFocus",localPlayer,edits[customedit.getActive()]["id"])
+            if (customedit.getActive()-1)==0 then
+                triggerEvent("onCustomEditLeave",localPlayer,edits[#edits]["id"])
+            else
+                triggerEvent("onCustomEditLeave",localPlayer,edits[customedit.getActive()-1]["id"])
             end
         end
     end
@@ -127,6 +141,7 @@ addEventHandler("onClientKey",root,function(key, state)
             for k,v in ipairs(edits)do
                 if v["active"] then
                     v["txt"] = string.sub(v["txt"], 1, #v["txt"] - 1)
+                    triggerEvent("onCustomEditType",localPlayer,v["id"])
                 end
             end
         end
