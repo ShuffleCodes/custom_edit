@@ -66,12 +66,16 @@ local keys = {
     ["ź"] = true,
     ["ż"] = true,
     ["ą"] = true,
-    [" "] = true}
+    [" "] = true,
+    ["/"] = true,
+    ["_"] = true,
+}
 
 
 local events={
     "onCustomEditFocus",
     "onCustomEditLeave",
+    "onCustomEditType",
 }
 
 for i=1,#events do

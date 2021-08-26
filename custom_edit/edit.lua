@@ -43,7 +43,7 @@ addEventHandler("onClientRender",root,function()
                     dxDrawLine(v["x"]+v["w"],v["y"]+v["h"]/1.5,v["x"]+v["w"],v["y"]+v["h"],tocolor(v["activecolor"][1],v["activecolor"][2],v["activecolor"][3],v["alpha"]/75*200),2,v["postgui"])
                 end
 
-                variable.alpha = interpolateBetween(0, 0, 0, v["activecolor"][4], 0, 0, (getTickCount() - v["cursor"]) / 1000, "SineCurve")
+                variable.alpha = interpolateBetween(0, 0, 0, 255, 0, 0, (getTickCount() - v["cursor"]) / 1000, "SineCurve")
                 dxDrawRectangle(v["x"]+variable.cursor+(10/1920)*s.x,v["y"]+v["h"]/2-(v["h"]-(12/1080)*s["y"])/2,(1/1920)*s["x"],v["h"]-(12/1080)*s["y"],tocolor(v["caret"][1],v["caret"][2],v["caret"][3],variable.alpha),true)
             else
                 v["alpha"] = interpolateBetween(v["alpha"], 0, 0, 0, 0, 0, (getTickCount() - v["click"]) / 200, "Linear")
@@ -157,6 +157,7 @@ addEventHandler("onClientCharacter",root,function(char)
                         if string.len(customedit.getText(k))<v["maxLength"] then
                             v["txt"]=v["txt"]..char
                             v["cursor"]=getTickCount()
+                            triggerEvent("onCustomEditType",localPlayer,v["id"])
                         end
                     end
                 end
