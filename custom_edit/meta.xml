@@ -22,6 +22,7 @@
 	<export function="editSetProperty" type="client"/>
 	<export function="editSetFocus" type="client"/>
 	<export function="destroyCustomEdit" type="client"/>
+	<export function="isActive" type="client"/>
 	
 	<aclrequest>
 		<right name="function.fetchRemote" access="true" />

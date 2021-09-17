@@ -38,4 +38,6 @@ function destroyCustomEdit(...)
     return customedit.destroy(...)
 end
 
-
+function isActive(...)
+    return customedit.isactive(...)
+end
