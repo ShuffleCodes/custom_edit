@@ -47,7 +47,7 @@ local keys = {
     [","] = true, 
     ["."] = true, 
     ["-"] = true, 
-	["!"] = true, 
+    ["!"] = true, 
     ["?"] = true, 
     ["#"] = true, 
     ["&"] = true, 
@@ -83,11 +83,11 @@ for i=1,#events do
 end 
 
 function customedit.validChar (char)
-	if (keys[string.lower(char)]) then
-		return true
-	else
-		return false
-	end
+    if (keys[string.lower(char)]) then
+        return true
+    else
+        return false
+    end
 end
 
 function isMouseInPosition (x, y, width, height)
@@ -203,7 +203,16 @@ function customedit.create(txt,x,y,w,h,postgui,placeholder,masked,font,activecol
 end
 
 
-
+function customedit.isactive(edit)
+    for k,v in ipairs(edits)do
+        if v["active"] then
+            if k==edit then
+                return true
+            end
+        end
+    end
+    return false
+end
 
 function customedit.getActive()
     for k,v in ipairs(edits)do
