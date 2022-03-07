@@ -133,7 +133,7 @@ end
 
 edit={}
 
-function customedit.create(txt,x,y,w,h,postgui,placeholder,masked,font,activecolor,fontcolor,bgcolor,caret,visible,length,fontsize)
+function customedit.create(txt,x,y,w,h,postgui,placeholder,masked,font,activecolor,fontcolor,bgcolor,caret,visible,length,fontsize,blockspace)
     if postgui~=true and postgui~=false then
         postgui=false
     end
@@ -198,6 +198,7 @@ function customedit.create(txt,x,y,w,h,postgui,placeholder,masked,font,activecol
         click=0,
         alpha=0,
         readOnly=false,
+        blockspace=blockspace,
     })
     return variable.id
 end
