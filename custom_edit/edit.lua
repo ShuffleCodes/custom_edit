@@ -171,8 +171,8 @@ addEventHandler("onClientCharacter",root,function(char)
                     if v["active"] then
                         if tonumber(string.len(customedit.getText(v["id"])))<tonumber(v["maxLength"]) then
                          if char==" " then
-print("test")
                            if v["blockspace"] then
+print("blokada")
                               return
                            end
                          else
