@@ -170,9 +170,15 @@ addEventHandler("onClientCharacter",root,function(char)
                 for k,v in ipairs(edits)do
                     if v["active"] then
                         if tonumber(string.len(customedit.getText(v["id"])))<tonumber(v["maxLength"]) then
+                         if char==" " then
+                           if v["blockspace"] then
+                              return
+                           end
+                         else
                             v["txt"]=v["txt"]..char
                             v["cursor"]=getTickCount()
                             triggerEvent("onCustomEditType",localPlayer,v["id"])
+                         end
                         end
                     end
                 end
