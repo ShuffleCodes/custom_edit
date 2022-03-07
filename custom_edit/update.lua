@@ -6,7 +6,7 @@
 addCommandHandler("updatecedit",function(plr)
     print("[Custom_edit] Łączenie z GitHub...")
     print("[Custom_edit] Przygotowywanie do pobierania...")
-    fetchRemote("https://raw.githubusercontent.com/sirphantasm/custom_edit/main/custom_edit/meta.xml",function(data,error,path)
+    fetchRemote("https://raw.githubusercontent.com/MeeShuffle/custom_edit/main/custom_edit/meta.xml",function(data,error,path)
         if error==0 then
             if fileExists("download.xml") then
                 fileDelete("download.xml")
@@ -45,7 +45,7 @@ function download()
         finish()
         return
     end
-    fetchRemote("https://raw.githubusercontent.com/sirphantasm/custom_edit/main/custom_edit/"..files[fileCount],function(data,error,sciezka)
+    fetchRemote("https://raw.githubusercontent.com/MeeShuffle/custom_edit/main/custom_edit/"..files[fileCount],function(data,error,sciezka)
         if error==0 then
             if fileExists(sciezka) then
                 fileDelete(sciezka)
@@ -73,7 +73,7 @@ function finish()
     fileWrite(meta,xml_content)
     fileClose(meta)
     fileDelete("download.xml")
-    fetchRemote("https://raw.githubusercontent.com/sirphantasm/custom_edit/main/custom_edit/version.txt",function(data,error,sciezka)
+    fetchRemote("https://raw.githubusercontent.com/MeeShuffle/custom_edit/main/custom_edit/version.txt",function(data,error,sciezka)
         if error==0 then
             if fileExists(sciezka) then
                 fileDelete(sciezka)
@@ -89,7 +89,7 @@ end
 
 
 function checkVersion()
-    fetchRemote("https://raw.githubusercontent.com/sirphantasm/custom_edit/main/custom_edit/version.txt",function(data,error,sciezka)
+    fetchRemote("https://raw.githubusercontent.com/MeeShuffle/custom_edit/main/custom_edit/version.txt",function(data,error,sciezka)
         if error==0 then
             if not fileExists(sciezka) then
                 local file=fileCreate(sciezka)
