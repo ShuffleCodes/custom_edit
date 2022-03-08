@@ -99,7 +99,7 @@ function checkVersion()
                 local size=fileGetSize(file)
                 local content=fileRead(file,size)
                 if data~=content then
-                    print("Dostępna jest nowsza wersja custom_edit ("..data.."). Obecna wersja ("..content..").")
+                    print("Dostępna jest nowsza wersja custom_edit by MeeShuffle ("..data.."). Obecna wersja ("..content..").")
                     print("Wpisz /updatecedit aby pobrać aktualizację")
                 end
             end
