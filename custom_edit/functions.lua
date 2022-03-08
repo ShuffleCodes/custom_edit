@@ -350,7 +350,7 @@ function customedit.clear(res)
         end
     end
 end
-addEventHandler("onClientResourceStop",root,customedit.clear)
+addEventHandler("onClientResourceStop",resourceRoot,customedit.clear)
 
 
 function customedit.property(edit,data,value)
