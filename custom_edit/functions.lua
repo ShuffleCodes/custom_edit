@@ -253,6 +253,18 @@ function customedit.getText(edit)
     end
 end
 
+
+function customedit.getLength(edit)
+    if edit then
+        for k,v in ipairs(edits)do
+            if v["id"]==edit then
+                return string.len(v["txt"])
+            end
+        end
+        return ""
+    end
+end
+
 function customedit.setText(edit,txt)
     if edit then
         if txt then
