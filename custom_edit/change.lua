@@ -22,6 +22,10 @@ function editMaxLength(...)
     return customedit.maxLength(...)
 end
 
+function editGetLength(...)
+    return customedit.getLength(...)
+end
+
 function editChangePos(...)
     return customedit.changePos(...)
 end
