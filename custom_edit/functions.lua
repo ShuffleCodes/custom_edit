@@ -224,6 +224,8 @@ function customedit.getActive()
     return false
 end
 
+
+
 function customedit.convertMasked(string)
     variable.lenght=string.len(string)
     return string.rep("*",variable.lenght)
