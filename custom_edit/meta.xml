@@ -2,7 +2,6 @@
 	<info name="Custom edit" author="MeeShuffle" version="1.0 Beta"/>
 	<script src="edit.lua" type="client" cache="false"/>
 	<script src="functions.lua" type="client" cache="false"/>
-	<script src="test.lua" type="client" cache="false"/>
 	<script src="change.lua" type="client" cache="false"/>
 	<script src="update.lua" type="server"/>
 	<file src="fonts/font.ttf"/>
