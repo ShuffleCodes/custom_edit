@@ -172,6 +172,9 @@ function customedit.create(txt,x,y,w,h,postgui,placeholder,masked,font,activecol
     if not visible and visible~=false then
         visible=true
     end
+    if not blockspace then
+        blockspace=false
+    end
     variable.id=customedit.freeID()
     --table.insert(resources,{id=variable.id,resource=getResourceName(sourceResource)})
     table.insert(edits,{
