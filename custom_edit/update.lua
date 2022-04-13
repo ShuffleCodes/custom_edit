@@ -25,9 +25,9 @@ end)
 function prepare()
     files={}
     local xml = xmlLoadFile("download.xml")
-	for k,v in pairs(xmlNodeGetChildren(xml)) do
-		if xmlNodeGetName(v) == "script" or xmlNodeGetName(v) == "file" then
-			local path = xmlNodeGetAttribute(v,"src")
+    for k,v in pairs(xmlNodeGetChildren(xml)) do
+        if xmlNodeGetName(v) == "script" or xmlNodeGetName(v) == "file" then
+            local path = xmlNodeGetAttribute(v,"src")
             table.insert(files,path)
         end
     end
@@ -101,6 +101,8 @@ function checkVersion()
                 if data~=content then
                     print("Dostępna jest nowsza wersja custom_edit by MeeShuffle ("..data.."). Obecna wersja ("..content..").")
                     print("Wpisz /updatecedit aby pobrać aktualizację")
+                else
+                    print("Posiadasz aktualną wersję custom_edit ("..data..")")
                 end
             end
         end
