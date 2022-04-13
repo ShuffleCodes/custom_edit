@@ -101,8 +101,6 @@ function checkVersion()
                 if data~=content then
                     print("Dostępna jest nowsza wersja custom_edit by MeeShuffle ("..data.."). Obecna wersja ("..content..").")
                     print("Wpisz /updatecedit aby pobrać aktualizację")
-                else
-                    print("Posiadasz aktualną wersję custom_edit ("..data..")")
                 end
             end
         end
