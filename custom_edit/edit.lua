@@ -7,7 +7,7 @@ s=Vector2(guiGetScreenSize())
 
 
 
-
+style = "1"
 
 
 addEventHandler("onClientRender",root,function()
