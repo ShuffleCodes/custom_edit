@@ -273,8 +273,10 @@ end
 function customedit.setText(edit,txt)
     if edit then
         if txt then
+            print("Next 275")
             for k,v in ipairs(edits)do
                 if v["id"]==edit then
+                    print("Next 278")
                     v["txt"]=txt
                     return true
                 end
