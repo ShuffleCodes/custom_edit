@@ -272,6 +272,7 @@ end
 
 function customedit.setText(edit,txt)
     if edit then
+        print("Next 274")
         if txt then
             print("Next 275")
             for k,v in ipairs(edits)do
