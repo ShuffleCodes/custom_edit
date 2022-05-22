@@ -45,3 +45,7 @@ end
 function isActive(...)
     return customedit.isactive(...)
 end
+
+function isEdit(...)
+    return customedit.isedit(...)
+end

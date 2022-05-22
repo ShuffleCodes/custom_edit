@@ -394,3 +394,15 @@ function customedit.focus(edit)
     end
     return false
 end
+
+
+function customedit.isedit(edit)
+    if edit then
+        for k,v in ipairs(edits)do
+            if v["id"]==edit then
+                return true
+            end
+        end
+    end
+    return false
+end
