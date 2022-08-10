@@ -284,6 +284,14 @@ function customedit.setText(edit,txt)
     return false
 end
 
+addEventHandler("onClientPaste",root,function(txt)
+    local active = customedit.getActive()
+    if active then
+        local actuall = customedit.getText(active)
+        customedit.setText(active,actuall..""..txt)
+    end
+end)
+
 function customedit.destroy(edit)
     if edit then
         for k,v in ipairs(edits)do
